@@ -1,0 +1,37 @@
+{{outlet}}
+<h1>Contact Page</h1>
+
+<br/>
+
+	<div class="form-horizontal form-group form-group-lg row">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2 has-feedback {{if model.emailValid 'has-success'}}">
+			<label for="email">Email</label>
+			{{input type="email" value=model.email class="form-control" placeholder="Enter your email address" autofocus="autofocus"}}
+			{{#if model.emailValid}}
+			<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="false"></span>
+			{{/if}}
+
+<br/>
+		</div>
+
+		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2 has-feedback {{if model.messageValid 'has-success'}}">
+
+				<label for="message">Message</label>
+				{{textarea value=model.message class="form-control" placeholder="Your message. (At least 5 characters.)" rows="7" }}
+				{{#if model.messageValid}}
+			<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="false"></span>
+			{{/if}}
+				</div>
+
+		<div class="col-cs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+			<button class="btn btn-primary btn-lg btn-block" {{action 'saveContactResponse' model}} disabled={{unless model.formValid 'disabled'}}>
+				Submit
+			</button>
+		</div>
+	</div>
+
+	{{#if model.responseMessage}}
+	<div class="alert alert-success">
+		{{model.responseMessage}}
+		</div>
+	{{/if}}
